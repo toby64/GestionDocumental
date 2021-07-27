@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDocumentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_idDocumento}"/>
+                    <h:outputText value="#{documentosController.selected.idDocumento}" title="#{bundle.ViewDocumentosTitle_idDocumento}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_radicado}"/>
+                    <h:outputText value="#{documentosController.selected.radicado}" title="#{bundle.ViewDocumentosTitle_radicado}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_nombreContribuyente}"/>
+                    <h:outputText value="#{documentosController.selected.nombreContribuyente}" title="#{bundle.ViewDocumentosTitle_nombreContribuyente}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_identificacionContribuyente}"/>
+                    <h:outputText value="#{documentosController.selected.identificacionContribuyente}" title="#{bundle.ViewDocumentosTitle_identificacionContribuyente}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_tipoRenta}"/>
+                    <h:outputText value="#{documentosController.selected.tipoRenta}" title="#{bundle.ViewDocumentosTitle_tipoRenta}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_abogado}"/>
+                    <h:outputText value="#{documentosController.selected.abogado}" title="#{bundle.ViewDocumentosTitle_abogado}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_createdAt}"/>
+                    <h:outputText value="#{documentosController.selected.createdAt}" title="#{bundle.ViewDocumentosTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_updatedAt}"/>
+                    <h:outputText value="#{documentosController.selected.updatedAt}" title="#{bundle.ViewDocumentosTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_deletedAt}"/>
+                    <h:outputText value="#{documentosController.selected.deletedAt}" title="#{bundle.ViewDocumentosTitle_deletedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_documentoCustodiaid}"/>
+                    <h:outputText value="#{documentosController.selected.documentoCustodiaid}" title="#{bundle.ViewDocumentosTitle_documentoCustodiaid}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_procesoid}"/>
+                    <h:outputText value="#{documentosController.selected.procesoid}" title="#{bundle.ViewDocumentosTitle_procesoid}"/>
+                    <h:outputText value="#{bundle.ViewDocumentosLabel_tipoDocumentalid}"/>
+                    <h:outputText value="#{documentosController.selected.tipoDocumentalid}" title="#{bundle.ViewDocumentosTitle_tipoDocumentalid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{documentosController.destroyAndView}" value="#{bundle.ViewDocumentosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDocumentosEditLink}"/>
+                <br />
+                <h:commandLink action="#{documentosController.prepareCreate}" value="#{bundle.ViewDocumentosCreateLink}" />
+                <br />
+                <h:commandLink action="#{documentosController.prepareList}" value="#{bundle.ViewDocumentosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDocumentosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

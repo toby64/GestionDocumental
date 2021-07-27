@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTiposdocumentalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTiposdocumentalesLabel_idTipoDocumental}" for="idTipoDocumental" />
+                    <h:inputText id="idTipoDocumental" value="#{tiposdocumentalesController.selected.idTipoDocumental}" title="#{bundle.EditTiposdocumentalesTitle_idTipoDocumental}" required="true" requiredMessage="#{bundle.EditTiposdocumentalesRequiredMessage_idTipoDocumental}"/>
+                    <h:outputLabel value="#{bundle.EditTiposdocumentalesLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{tiposdocumentalesController.selected.nombre}" title="#{bundle.EditTiposdocumentalesTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditTiposdocumentalesLabel_flujos}" for="flujos" />
+                    <h:inputText id="flujos" value="#{tiposdocumentalesController.selected.flujos}" title="#{bundle.EditTiposdocumentalesTitle_flujos}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tiposdocumentalesController.update}" value="#{bundle.EditTiposdocumentalesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTiposdocumentalesViewLink}"/>
+                <br />
+                <h:commandLink action="#{tiposdocumentalesController.prepareList}" value="#{bundle.EditTiposdocumentalesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTiposdocumentalesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

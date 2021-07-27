@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDocumentoscustodiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_idDocumentoCustodia}" for="idDocumentoCustodia" />
+                    <h:inputText id="idDocumentoCustodia" value="#{documentoscustodiaController.selected.idDocumentoCustodia}" title="#{bundle.EditDocumentoscustodiaTitle_idDocumentoCustodia}" required="true" requiredMessage="#{bundle.EditDocumentoscustodiaRequiredMessage_idDocumentoCustodia}"/>
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_idUsuario}" for="idUsuario" />
+                    <h:inputText id="idUsuario" value="#{documentoscustodiaController.selected.idUsuario}" title="#{bundle.EditDocumentoscustodiaTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditDocumentoscustodiaRequiredMessage_idUsuario}"/>
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_remitente}" for="remitente" />
+                    <h:inputText id="remitente" value="#{documentoscustodiaController.selected.remitente}" title="#{bundle.EditDocumentoscustodiaTitle_remitente}" />
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_bodega}" for="bodega" />
+                    <h:inputText id="bodega" value="#{documentoscustodiaController.selected.bodega}" title="#{bundle.EditDocumentoscustodiaTitle_bodega}" />
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_codigoCustodia}" for="codigoCustodia" />
+                    <h:inputText id="codigoCustodia" value="#{documentoscustodiaController.selected.codigoCustodia}" title="#{bundle.EditDocumentoscustodiaTitle_codigoCustodia}" />
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_fechaCustodia}" for="fechaCustodia" />
+                    <h:inputText id="fechaCustodia" value="#{documentoscustodiaController.selected.fechaCustodia}" title="#{bundle.EditDocumentoscustodiaTitle_fechaCustodia}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{documentoscustodiaController.selected.createdAt}" title="#{bundle.EditDocumentoscustodiaTitle_createdAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{documentoscustodiaController.selected.updatedAt}" title="#{bundle.EditDocumentoscustodiaTitle_updatedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentoscustodiaLabel_deletedAt}" for="deletedAt" />
+                    <h:inputText id="deletedAt" value="#{documentoscustodiaController.selected.deletedAt}" title="#{bundle.EditDocumentoscustodiaTitle_deletedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{documentoscustodiaController.update}" value="#{bundle.EditDocumentoscustodiaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDocumentoscustodiaViewLink}"/>
+                <br />
+                <h:commandLink action="#{documentoscustodiaController.prepareList}" value="#{bundle.EditDocumentoscustodiaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDocumentoscustodiaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

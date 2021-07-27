@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProcesosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProcesosLabel_idProceso}"/>
+                    <h:outputText value="#{procesosController.selected.idProceso}" title="#{bundle.ViewProcesosTitle_idProceso}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_entidadRemitente}"/>
+                    <h:outputText value="#{procesosController.selected.entidadRemitente}" title="#{bundle.ViewProcesosTitle_entidadRemitente}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_entidadProductora}"/>
+                    <h:outputText value="#{procesosController.selected.entidadProductora}" title="#{bundle.ViewProcesosTitle_entidadProductora}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_unidadAdministrativa}"/>
+                    <h:outputText value="#{procesosController.selected.unidadAdministrativa}" title="#{bundle.ViewProcesosTitle_unidadAdministrativa}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_oficinaProductora}"/>
+                    <h:outputText value="#{procesosController.selected.oficinaProductora}" title="#{bundle.ViewProcesosTitle_oficinaProductora}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_motivoProceso}"/>
+                    <h:outputText value="#{procesosController.selected.motivoProceso}" title="#{bundle.ViewProcesosTitle_motivoProceso}"/>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_createdAt}"/>
+                    <h:outputText value="#{procesosController.selected.createdAt}" title="#{bundle.ViewProcesosTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_updatedAt}"/>
+                    <h:outputText value="#{procesosController.selected.updatedAt}" title="#{bundle.ViewProcesosTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_deletedAt}"/>
+                    <h:outputText value="#{procesosController.selected.deletedAt}" title="#{bundle.ViewProcesosTitle_deletedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProcesosLabel_entidadProductoraid}"/>
+                    <h:outputText value="#{procesosController.selected.entidadProductoraid}" title="#{bundle.ViewProcesosTitle_entidadProductoraid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{procesosController.destroyAndView}" value="#{bundle.ViewProcesosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProcesosEditLink}"/>
+                <br />
+                <h:commandLink action="#{procesosController.prepareCreate}" value="#{bundle.ViewProcesosCreateLink}" />
+                <br />
+                <h:commandLink action="#{procesosController.prepareList}" value="#{bundle.ViewProcesosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProcesosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

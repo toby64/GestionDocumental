@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListInformaciondocumentalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListInformaciondocumentalEmpty}" rendered="#{informaciondocumentalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{informaciondocumentalController.items.rowCount > 0}">
+                    <h:outputText value="#{informaciondocumentalController.pagination.pageFirstItem + 1}..#{informaciondocumentalController.pagination.pageLastItem + 1}/#{informaciondocumentalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{informaciondocumentalController.previous}" value="#{bundle.Previous} #{informaciondocumentalController.pagination.pageSize}" rendered="#{informaciondocumentalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{informaciondocumentalController.next}" value="#{bundle.Next} #{informaciondocumentalController.pagination.pageSize}" rendered="#{informaciondocumentalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{informaciondocumentalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_idInformacionDocumental}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idInformacionDocumental}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_noFolios}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.noFolios}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_noImagenes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.noImagenes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_carpeta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carpeta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_caja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.caja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInformaciondocumentalTitle_documentoid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documentoid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{informaciondocumentalController.prepareView}" value="#{bundle.ListInformaciondocumentalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{informaciondocumentalController.prepareEdit}" value="#{bundle.ListInformaciondocumentalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{informaciondocumentalController.destroy}" value="#{bundle.ListInformaciondocumentalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{informaciondocumentalController.prepareCreate}" value="#{bundle.ListInformaciondocumentalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListInformaciondocumentalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

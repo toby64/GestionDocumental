@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDocumentosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_idDocumento}" for="idDocumento" />
+                    <h:inputText id="idDocumento" value="#{documentosController.selected.idDocumento}" title="#{bundle.EditDocumentosTitle_idDocumento}" required="true" requiredMessage="#{bundle.EditDocumentosRequiredMessage_idDocumento}"/>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_radicado}" for="radicado" />
+                    <h:inputText id="radicado" value="#{documentosController.selected.radicado}" title="#{bundle.EditDocumentosTitle_radicado}" />
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_nombreContribuyente}" for="nombreContribuyente" />
+                    <h:inputText id="nombreContribuyente" value="#{documentosController.selected.nombreContribuyente}" title="#{bundle.EditDocumentosTitle_nombreContribuyente}" />
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_identificacionContribuyente}" for="identificacionContribuyente" />
+                    <h:inputText id="identificacionContribuyente" value="#{documentosController.selected.identificacionContribuyente}" title="#{bundle.EditDocumentosTitle_identificacionContribuyente}" />
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_tipoRenta}" for="tipoRenta" />
+                    <h:inputText id="tipoRenta" value="#{documentosController.selected.tipoRenta}" title="#{bundle.EditDocumentosTitle_tipoRenta}" />
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_abogado}" for="abogado" />
+                    <h:inputText id="abogado" value="#{documentosController.selected.abogado}" title="#{bundle.EditDocumentosTitle_abogado}" />
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{documentosController.selected.createdAt}" title="#{bundle.EditDocumentosTitle_createdAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{documentosController.selected.updatedAt}" title="#{bundle.EditDocumentosTitle_updatedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_deletedAt}" for="deletedAt" />
+                    <h:inputText id="deletedAt" value="#{documentosController.selected.deletedAt}" title="#{bundle.EditDocumentosTitle_deletedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_documentoCustodiaid}" for="documentoCustodiaid" />
+                    <h:selectOneMenu id="documentoCustodiaid" value="#{documentosController.selected.documentoCustodiaid}" title="#{bundle.EditDocumentosTitle_documentoCustodiaid}" >
+                        <f:selectItems value="#{documentoscustodiaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_procesoid}" for="procesoid" />
+                    <h:selectOneMenu id="procesoid" value="#{documentosController.selected.procesoid}" title="#{bundle.EditDocumentosTitle_procesoid}" required="true" requiredMessage="#{bundle.EditDocumentosRequiredMessage_procesoid}">
+                        <f:selectItems value="#{procesosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDocumentosLabel_tipoDocumentalid}" for="tipoDocumentalid" />
+                    <h:selectOneMenu id="tipoDocumentalid" value="#{documentosController.selected.tipoDocumentalid}" title="#{bundle.EditDocumentosTitle_tipoDocumentalid}" required="true" requiredMessage="#{bundle.EditDocumentosRequiredMessage_tipoDocumentalid}">
+                        <f:selectItems value="#{tiposdocumentalesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{documentosController.update}" value="#{bundle.EditDocumentosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDocumentosViewLink}"/>
+                <br />
+                <h:commandLink action="#{documentosController.prepareList}" value="#{bundle.EditDocumentosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDocumentosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFlujosdocumentalesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFlujosdocumentalesLabel_idFlujoDocumental}"/>
+                    <h:outputText value="#{flujosdocumentalesController.selected.idFlujoDocumental}" title="#{bundle.ViewFlujosdocumentalesTitle_idFlujoDocumental}"/>
+                    <h:outputText value="#{bundle.ViewFlujosdocumentalesLabel_nombre}"/>
+                    <h:outputText value="#{flujosdocumentalesController.selected.nombre}" title="#{bundle.ViewFlujosdocumentalesTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewFlujosdocumentalesLabel_descripcion}"/>
+                    <h:outputText value="#{flujosdocumentalesController.selected.descripcion}" title="#{bundle.ViewFlujosdocumentalesTitle_descripcion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{flujosdocumentalesController.destroyAndView}" value="#{bundle.ViewFlujosdocumentalesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFlujosdocumentalesEditLink}"/>
+                <br />
+                <h:commandLink action="#{flujosdocumentalesController.prepareCreate}" value="#{bundle.ViewFlujosdocumentalesCreateLink}" />
+                <br />
+                <h:commandLink action="#{flujosdocumentalesController.prepareList}" value="#{bundle.ViewFlujosdocumentalesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFlujosdocumentalesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

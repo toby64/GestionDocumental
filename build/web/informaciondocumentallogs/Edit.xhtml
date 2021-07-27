@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditInformaciondocumentallogsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_idInformacionDocumentalLog}" for="idInformacionDocumentalLog" />
+                    <h:inputText id="idInformacionDocumentalLog" value="#{informaciondocumentallogsController.selected.idInformacionDocumentalLog}" title="#{bundle.EditInformaciondocumentallogsTitle_idInformacionDocumentalLog}" required="true" requiredMessage="#{bundle.EditInformaciondocumentallogsRequiredMessage_idInformacionDocumentalLog}"/>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{informaciondocumentallogsController.selected.createdAt}" title="#{bundle.EditInformaciondocumentallogsTitle_createdAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{informaciondocumentallogsController.selected.updatedAt}" title="#{bundle.EditInformaciondocumentallogsTitle_updatedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_deletedAt}" for="deletedAt" />
+                    <h:inputText id="deletedAt" value="#{informaciondocumentallogsController.selected.deletedAt}" title="#{bundle.EditInformaciondocumentallogsTitle_deletedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_estadoid}" for="estadoid" />
+                    <h:selectOneMenu id="estadoid" value="#{informaciondocumentallogsController.selected.estadoid}" title="#{bundle.EditInformaciondocumentallogsTitle_estadoid}" required="true" requiredMessage="#{bundle.EditInformaciondocumentallogsRequiredMessage_estadoid}">
+                        <f:selectItems value="#{estadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_idInformacionDocumental}" for="idInformacionDocumental" />
+                    <h:selectOneMenu id="idInformacionDocumental" value="#{informaciondocumentallogsController.selected.idInformacionDocumental}" title="#{bundle.EditInformaciondocumentallogsTitle_idInformacionDocumental}" required="true" requiredMessage="#{bundle.EditInformaciondocumentallogsRequiredMessage_idInformacionDocumental}">
+                        <f:selectItems value="#{informaciondocumentalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditInformaciondocumentallogsLabel_usuarioid}" for="usuarioid" />
+                    <h:selectOneMenu id="usuarioid" value="#{informaciondocumentallogsController.selected.usuarioid}" title="#{bundle.EditInformaciondocumentallogsTitle_usuarioid}" required="true" requiredMessage="#{bundle.EditInformaciondocumentallogsRequiredMessage_usuarioid}">
+                        <f:selectItems value="#{usuariosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{informaciondocumentallogsController.update}" value="#{bundle.EditInformaciondocumentallogsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditInformaciondocumentallogsViewLink}"/>
+                <br />
+                <h:commandLink action="#{informaciondocumentallogsController.prepareList}" value="#{bundle.EditInformaciondocumentallogsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditInformaciondocumentallogsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDocumentoscustodiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_idDocumentoCustodia}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.idDocumentoCustodia}" title="#{bundle.ViewDocumentoscustodiaTitle_idDocumentoCustodia}"/>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_idUsuario}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.idUsuario}" title="#{bundle.ViewDocumentoscustodiaTitle_idUsuario}"/>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_remitente}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.remitente}" title="#{bundle.ViewDocumentoscustodiaTitle_remitente}"/>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_bodega}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.bodega}" title="#{bundle.ViewDocumentoscustodiaTitle_bodega}"/>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_codigoCustodia}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.codigoCustodia}" title="#{bundle.ViewDocumentoscustodiaTitle_codigoCustodia}"/>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_fechaCustodia}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.fechaCustodia}" title="#{bundle.ViewDocumentoscustodiaTitle_fechaCustodia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_createdAt}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.createdAt}" title="#{bundle.ViewDocumentoscustodiaTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_updatedAt}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.updatedAt}" title="#{bundle.ViewDocumentoscustodiaTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDocumentoscustodiaLabel_deletedAt}"/>
+                    <h:outputText value="#{documentoscustodiaController.selected.deletedAt}" title="#{bundle.ViewDocumentoscustodiaTitle_deletedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{documentoscustodiaController.destroyAndView}" value="#{bundle.ViewDocumentoscustodiaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDocumentoscustodiaEditLink}"/>
+                <br />
+                <h:commandLink action="#{documentoscustodiaController.prepareCreate}" value="#{bundle.ViewDocumentoscustodiaCreateLink}" />
+                <br />
+                <h:commandLink action="#{documentoscustodiaController.prepareList}" value="#{bundle.ViewDocumentoscustodiaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDocumentoscustodiaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

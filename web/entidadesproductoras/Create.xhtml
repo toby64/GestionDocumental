@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEntidadesproductorasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_idEntidadProductora}" for="idEntidadProductora" />
+                    <h:inputText id="idEntidadProductora" value="#{entidadesproductorasController.selected.idEntidadProductora}" title="#{bundle.CreateEntidadesproductorasTitle_idEntidadProductora}" required="true" requiredMessage="#{bundle.CreateEntidadesproductorasRequiredMessage_idEntidadProductora}"/>
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_entidadAdministrativa}" for="entidadAdministrativa" />
+                    <h:inputText id="entidadAdministrativa" value="#{entidadesproductorasController.selected.entidadAdministrativa}" title="#{bundle.CreateEntidadesproductorasTitle_entidadAdministrativa}" />
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_secretaria}" for="secretaria" />
+                    <h:inputText id="secretaria" value="#{entidadesproductorasController.selected.secretaria}" title="#{bundle.CreateEntidadesproductorasTitle_secretaria}" />
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_subsecretaria}" for="subsecretaria" />
+                    <h:inputText id="subsecretaria" value="#{entidadesproductorasController.selected.subsecretaria}" title="#{bundle.CreateEntidadesproductorasTitle_subsecretaria}" />
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_fechaEntrega}" for="fechaEntrega" />
+                    <h:inputText id="fechaEntrega" value="#{entidadesproductorasController.selected.fechaEntrega}" title="#{bundle.CreateEntidadesproductorasTitle_fechaEntrega}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_tipoDocumentoGenerado}" for="tipoDocumentoGenerado" />
+                    <h:inputText id="tipoDocumentoGenerado" value="#{entidadesproductorasController.selected.tipoDocumentoGenerado}" title="#{bundle.CreateEntidadesproductorasTitle_tipoDocumentoGenerado}" />
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{entidadesproductorasController.selected.createdAt}" title="#{bundle.CreateEntidadesproductorasTitle_createdAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{entidadesproductorasController.selected.updatedAt}" title="#{bundle.CreateEntidadesproductorasTitle_updatedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_deletedAt}" for="deletedAt" />
+                    <h:inputText id="deletedAt" value="#{entidadesproductorasController.selected.deletedAt}" title="#{bundle.CreateEntidadesproductorasTitle_deletedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEntidadesproductorasLabel_tipoDocumentalid}" for="tipoDocumentalid" />
+                    <h:selectOneMenu id="tipoDocumentalid" value="#{entidadesproductorasController.selected.tipoDocumentalid}" title="#{bundle.CreateEntidadesproductorasTitle_tipoDocumentalid}" required="true" requiredMessage="#{bundle.CreateEntidadesproductorasRequiredMessage_tipoDocumentalid}">
+                        <f:selectItems value="#{tiposdocumentalesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.create}" value="#{bundle.CreateEntidadesproductorasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.prepareList}" value="#{bundle.CreateEntidadesproductorasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEntidadesproductorasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

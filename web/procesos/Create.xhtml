@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProcesosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_idProceso}" for="idProceso" />
+                    <h:inputText id="idProceso" value="#{procesosController.selected.idProceso}" title="#{bundle.CreateProcesosTitle_idProceso}" required="true" requiredMessage="#{bundle.CreateProcesosRequiredMessage_idProceso}"/>
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_entidadRemitente}" for="entidadRemitente" />
+                    <h:inputText id="entidadRemitente" value="#{procesosController.selected.entidadRemitente}" title="#{bundle.CreateProcesosTitle_entidadRemitente}" />
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_entidadProductora}" for="entidadProductora" />
+                    <h:inputText id="entidadProductora" value="#{procesosController.selected.entidadProductora}" title="#{bundle.CreateProcesosTitle_entidadProductora}" />
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_unidadAdministrativa}" for="unidadAdministrativa" />
+                    <h:inputText id="unidadAdministrativa" value="#{procesosController.selected.unidadAdministrativa}" title="#{bundle.CreateProcesosTitle_unidadAdministrativa}" />
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_oficinaProductora}" for="oficinaProductora" />
+                    <h:inputText id="oficinaProductora" value="#{procesosController.selected.oficinaProductora}" title="#{bundle.CreateProcesosTitle_oficinaProductora}" />
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_motivoProceso}" for="motivoProceso" />
+                    <h:inputText id="motivoProceso" value="#{procesosController.selected.motivoProceso}" title="#{bundle.CreateProcesosTitle_motivoProceso}" />
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_createdAt}" for="createdAt" />
+                    <h:inputText id="createdAt" value="#{procesosController.selected.createdAt}" title="#{bundle.CreateProcesosTitle_createdAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_updatedAt}" for="updatedAt" />
+                    <h:inputText id="updatedAt" value="#{procesosController.selected.updatedAt}" title="#{bundle.CreateProcesosTitle_updatedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_deletedAt}" for="deletedAt" />
+                    <h:inputText id="deletedAt" value="#{procesosController.selected.deletedAt}" title="#{bundle.CreateProcesosTitle_deletedAt}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProcesosLabel_entidadProductoraid}" for="entidadProductoraid" />
+                    <h:selectOneMenu id="entidadProductoraid" value="#{procesosController.selected.entidadProductoraid}" title="#{bundle.CreateProcesosTitle_entidadProductoraid}" required="true" requiredMessage="#{bundle.CreateProcesosRequiredMessage_entidadProductoraid}">
+                        <f:selectItems value="#{entidadesproductorasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{procesosController.create}" value="#{bundle.CreateProcesosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{procesosController.prepareList}" value="#{bundle.CreateProcesosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProcesosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

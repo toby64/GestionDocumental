@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDocumentoscustodiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDocumentoscustodiaEmpty}" rendered="#{documentoscustodiaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{documentoscustodiaController.items.rowCount > 0}">
+                    <h:outputText value="#{documentoscustodiaController.pagination.pageFirstItem + 1}..#{documentoscustodiaController.pagination.pageLastItem + 1}/#{documentoscustodiaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{documentoscustodiaController.previous}" value="#{bundle.Previous} #{documentoscustodiaController.pagination.pageSize}" rendered="#{documentoscustodiaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{documentoscustodiaController.next}" value="#{bundle.Next} #{documentoscustodiaController.pagination.pageSize}" rendered="#{documentoscustodiaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{documentoscustodiaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_idDocumentoCustodia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDocumentoCustodia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_remitente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remitente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_bodega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bodega}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_codigoCustodia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCustodia}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_fechaCustodia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCustodia}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_createdAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createdAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_updatedAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.updatedAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentoscustodiaTitle_deletedAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deletedAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{documentoscustodiaController.prepareView}" value="#{bundle.ListDocumentoscustodiaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{documentoscustodiaController.prepareEdit}" value="#{bundle.ListDocumentoscustodiaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{documentoscustodiaController.destroy}" value="#{bundle.ListDocumentoscustodiaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{documentoscustodiaController.prepareCreate}" value="#{bundle.ListDocumentoscustodiaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDocumentoscustodiaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

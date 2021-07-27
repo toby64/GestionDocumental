@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEntidadesproductorasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEntidadesproductorasEmpty}" rendered="#{entidadesproductorasController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{entidadesproductorasController.items.rowCount > 0}">
+                    <h:outputText value="#{entidadesproductorasController.pagination.pageFirstItem + 1}..#{entidadesproductorasController.pagination.pageLastItem + 1}/#{entidadesproductorasController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{entidadesproductorasController.previous}" value="#{bundle.Previous} #{entidadesproductorasController.pagination.pageSize}" rendered="#{entidadesproductorasController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{entidadesproductorasController.next}" value="#{bundle.Next} #{entidadesproductorasController.pagination.pageSize}" rendered="#{entidadesproductorasController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{entidadesproductorasController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_idEntidadProductora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEntidadProductora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_entidadAdministrativa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.entidadAdministrativa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_secretaria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.secretaria}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_subsecretaria}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subsecretaria}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_fechaEntrega}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaEntrega}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_tipoDocumentoGenerado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDocumentoGenerado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_createdAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createdAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_updatedAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.updatedAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_deletedAt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deletedAt}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntidadesproductorasTitle_tipoDocumentalid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoDocumentalid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{entidadesproductorasController.prepareView}" value="#{bundle.ListEntidadesproductorasViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entidadesproductorasController.prepareEdit}" value="#{bundle.ListEntidadesproductorasEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{entidadesproductorasController.destroy}" value="#{bundle.ListEntidadesproductorasDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.prepareCreate}" value="#{bundle.ListEntidadesproductorasCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEntidadesproductorasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

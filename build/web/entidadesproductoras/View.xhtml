@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEntidadesproductorasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_idEntidadProductora}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.idEntidadProductora}" title="#{bundle.ViewEntidadesproductorasTitle_idEntidadProductora}"/>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_entidadAdministrativa}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.entidadAdministrativa}" title="#{bundle.ViewEntidadesproductorasTitle_entidadAdministrativa}"/>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_secretaria}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.secretaria}" title="#{bundle.ViewEntidadesproductorasTitle_secretaria}"/>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_subsecretaria}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.subsecretaria}" title="#{bundle.ViewEntidadesproductorasTitle_subsecretaria}"/>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_fechaEntrega}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.fechaEntrega}" title="#{bundle.ViewEntidadesproductorasTitle_fechaEntrega}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_tipoDocumentoGenerado}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.tipoDocumentoGenerado}" title="#{bundle.ViewEntidadesproductorasTitle_tipoDocumentoGenerado}"/>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_createdAt}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.createdAt}" title="#{bundle.ViewEntidadesproductorasTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_updatedAt}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.updatedAt}" title="#{bundle.ViewEntidadesproductorasTitle_updatedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_deletedAt}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.deletedAt}" title="#{bundle.ViewEntidadesproductorasTitle_deletedAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEntidadesproductorasLabel_tipoDocumentalid}"/>
+                    <h:outputText value="#{entidadesproductorasController.selected.tipoDocumentalid}" title="#{bundle.ViewEntidadesproductorasTitle_tipoDocumentalid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.destroyAndView}" value="#{bundle.ViewEntidadesproductorasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEntidadesproductorasEditLink}"/>
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.prepareCreate}" value="#{bundle.ViewEntidadesproductorasCreateLink}" />
+                <br />
+                <h:commandLink action="#{entidadesproductorasController.prepareList}" value="#{bundle.ViewEntidadesproductorasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEntidadesproductorasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
